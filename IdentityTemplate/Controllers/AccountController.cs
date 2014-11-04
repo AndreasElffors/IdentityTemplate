@@ -346,6 +346,9 @@ namespace IdentityTemplate.Controllers
             var user = await UserManager.FindAsync(loginInfo.Login);
             if (user != null)
             {
+                //
+
+                //
                 await SignInAsync(user, isPersistent: false);
                 return RedirectToLocal(returnUrl);
             }
@@ -436,6 +439,7 @@ namespace IdentityTemplate.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
@@ -480,7 +484,8 @@ namespace IdentityTemplate.Controllers
 
         private async Task SignInAsync(ApplicationUser user, bool isPersistent)
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(UserManager));
         }
 

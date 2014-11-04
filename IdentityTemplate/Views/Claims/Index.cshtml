@@ -1,0 +1,40 @@
+﻿@using System.Linq
+@using System.Security.Claims
+@using System.Web.UI.WebControls
+@using IdentityTemplate.Infrastructure
+@model System.Collections.Generic.IEnumerable<Claim>
+
+@{
+    ViewBag.Title = "Claims";
+}
+
+<img src="@ViewBag.Picture" style="max-width:200px; margin:20px 0px;"/>
+<br />
+<a href="@ViewBag.Profile">Google Plus Profile</a>
+<br/>
+<br/>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Claims
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Subject</th>
+            <th>Issuer</th>
+            <th>Type</th>
+            <th>Value</th>
+        </tr>
+        @foreach (Claim claim in Model.OrderBy(x => x.Type))
+        {
+            <tr>
+                <td>@claim.Subject.Name</td>
+                <td>@claim.OriginalIssuer</td>
+                <td>@Html.ClaimType(claim.Type)</td>
+                <td>@claim.Value</td>
+                <td></td>
+            </tr>
+        }
+    </table>
+</div>
+

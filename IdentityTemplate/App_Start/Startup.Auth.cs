@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Security.Claims;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -34,7 +35,7 @@ namespace IdentityTemplate
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
             });
-            
+
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
@@ -46,14 +47,34 @@ namespace IdentityTemplate
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+                appId: "625211800923183",
+                appSecret: "9ff0c0bb93556fb3c54c3c0261193dab");
+
+
+            var googleOauth2AuthenticationOptions = new GoogleOAuth2AuthenticationOptions
+            {
+                ClientId = "977006636134-9dsmh83ajg9ageouq6s7pr80im7koenb.apps.googleusercontent.com",
+                ClientSecret = "W2HeYWbzNfH3GyWUMYEjmz1l",
+                Provider = new GoogleOAuth2AuthenticationProvider()
+                {
+                    OnAuthenticated = async context =>
+                    {
+                        context.Identity.AddClaim(new Claim("picture", context.User.GetValue("picture").ToString()));
+                        context.Identity.AddClaim(new Claim("profile", context.User.GetValue("profile").ToString()));
+
+                    }
+                }
+            };
+
+            googleOauth2AuthenticationOptions.Scope.Add("email");
+
+            app.UseGoogleAuthentication(googleOauth2AuthenticationOptions);
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
-            //    ClientId = "",
-            //    ClientSecret = ""
+            //    ClientId = "977006636134-9dsmh83ajg9ageouq6s7pr80im7koenb.apps.googleusercontent.com",
+            //    ClientSecret = "W2HeYWbzNfH3GyWUMYEjmz1l"
             //});
         }
     }
