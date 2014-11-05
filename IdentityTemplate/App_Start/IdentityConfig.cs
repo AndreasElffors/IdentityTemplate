@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using System;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -55,6 +56,23 @@ namespace IdentityTemplate
             }
             return manager;
         }
+    }
+
+    public class ApplicationRoleManager : RoleManager<ApplicationRole>, IDisposable
+    {
+        public ApplicationRoleManager(RoleStore<ApplicationRole> store) :base(store)
+        {
+            
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options,
+            IOwinContext context)
+        {
+           return new ApplicationRoleManager(new RoleStore<ApplicationRole>(context.Get<ApplicationDbContext>())); 
+        }
+
+
+
     }
 
     public class EmailService : IIdentityMessageService

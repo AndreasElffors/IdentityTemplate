@@ -18,6 +18,13 @@ namespace IdentityTemplate.Models
         }
     }
 
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() :base() { }
+
+        public ApplicationRole(string name):base(name){ }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

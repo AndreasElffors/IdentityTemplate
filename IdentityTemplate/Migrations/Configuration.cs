@@ -10,6 +10,7 @@ namespace IdentityTemplate.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            ContextKey = "IdentityTemplate.Models.ApplicationDbContext";
         }
 
         protected override void Seed(IdentityTemplate.Models.ApplicationDbContext context)
