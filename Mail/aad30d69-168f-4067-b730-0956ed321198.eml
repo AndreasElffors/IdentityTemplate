@@ -1,0 +1,16 @@
+X-Sender: admin@admin.com
+X-Receiver: Test@test.com
+MIME-Version: 1.0
+From: admin@admin.com
+To: Test@test.com
+Date: 6 Nov 2014 08:20:18 +0100
+Subject: Reset Password
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+Please reset your password by clicking <a href=3D"http://localhos=
+t:1470/Account/ResetPassword?userId=3Da8b1389c-df93-4dfc-b463-541=
+507c1a4bc&code=3DyhUegXIM9SZBpPVbBtv22kg7NO7F96B8MJi9MryAadUY5XYj=
+z8srVkS5UL8Lx%2BLPYTU6a6jhqOrzMUkkMyPbEHPY3Ul6%2B%2F0s0qQvtM%2FLL=
+II3s29FgkcK0OnjX46Bmj9JlFCUx53rOH%2FXMacwnKDzoJ1rbrUyypZiJXloIE50=
+Q6iPuMTUHbX9O%2B3JMZtCVXjhhsHLkTOn9IVoN6uVAOMWNQ%3D%3D">here</a>
