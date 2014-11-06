@@ -1,0 +1,16 @@
+X-Sender: admin@admin.com
+X-Receiver: admin@admin.com
+MIME-Version: 1.0
+From: admin@admin.com
+To: admin@admin.com
+Date: 6 Nov 2014 09:18:55 +0100
+Subject: Confirm your account
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+Please confirm your account by clicking <a href=3D"http://localho=
+st:1470/Account/ConfirmEmail?userId=3D15a7aedf-2062-4910-aa73-832=
+b43aa114a&code=3DwOzI1ZhgCi%2FDw0%2BJ7UpqoPrdAJzu%2FvLJykrvTPn2HT=
+6uw6tLsHSEjPU1gVuqEZ6JfU%2FAU95Dbkwa7ikBzzKtJ0Dwn8LWusmaaS5zvoAMA=
+nmsbd848oon8uP3t4jbd6uxjYtNd5CzBzWXn51PlapR6de%2BDvsTlkS%2BGmywCg=
+oxwTdPtexdX6D90oI2tCx1oUdn">here</a>
