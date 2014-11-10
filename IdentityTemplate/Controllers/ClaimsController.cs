@@ -23,7 +23,7 @@ namespace IdentityTemplate.Controllers
             {
                 var facebookAccessToken = externalIdentity.FindAll("FacebookAccessToken").First();
                 var facebook = new FacebookClient(facebookAccessToken.Value);
-                dynamic myInfo = facebook.Get("/me/taggable_friends");
+                dynamic myInfo = facebook.Get("/me/friends");
                 var friendsList = new List<FacebookViewModel>();
                 foreach (dynamic friend in myInfo.data)
                 {
