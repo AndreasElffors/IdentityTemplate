@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
+using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
@@ -48,9 +49,26 @@ namespace IdentityTemplate
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-                appId: "625211800923183",
-                appSecret: "9ff0c0bb93556fb3c54c3c0261193dab");
+            //app.UseFacebookAuthentication(
+            //    appId: "625211800923183",
+            //    appSecret: "9ff0c0bb93556fb3c54c3c0261193dab");
+
+            var facebookAuthenticationOptions = new FacebookAuthenticationOptions();
+            facebookAuthenticationOptions.Scope.Add("email");
+            facebookAuthenticationOptions.Scope.Add("friends_about_me");
+            facebookAuthenticationOptions.Scope.Add("friends_photos");
+            facebookAuthenticationOptions.AppId = "625211800923183";
+            facebookAuthenticationOptions.AppSecret = "9ff0c0bb93556fb3c54c3c0261193dab";
+            facebookAuthenticationOptions.Provider = new FacebookAuthenticationProvider()
+            {
+                OnAuthenticated = async context =>
+                {
+                    context.Identity.AddClaim(new Claim("FacebookAccessToken", context.AccessToken));
+                }
+            };
+
+            app.UseFacebookAuthentication(facebookAuthenticationOptions);
+
 
 
             var googleOauth2AuthenticationOptions = new GoogleOAuth2AuthenticationOptions

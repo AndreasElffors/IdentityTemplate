@@ -36,5 +36,13 @@
             </tr>
         }
     </table>
+    
+    @if (ViewBag.FacebookFriends != null)
+    {
+        foreach (var friend in ViewBag.FacebookFriends)
+        {
+            <img src="@friend.ImgUrl"/>
+        }
+    }
 </div>
 
