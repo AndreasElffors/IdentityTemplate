@@ -1,0 +1,1 @@
+http://kevin-junghans.blogspot.se/2013/12/using-claims-in-aspnet-identity.html
