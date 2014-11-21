@@ -21,20 +21,21 @@ namespace IdentityTemplate.Controllers
             var externalIdentity = await HttpContext.GetOwinContext().Authentication.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
             if (externalIdentity != null)
             {
-                var facebookAccessToken = externalIdentity.FindAll("FacebookAccessToken").First();
-                var facebook = new FacebookClient(facebookAccessToken.Value);
-                dynamic myInfo = facebook.Get("/me/friends");
-                var friendsList = new List<FacebookViewModel>();
-                foreach (dynamic friend in myInfo.data)
-                {
-                    friendsList.Add(new FacebookViewModel()
-                    {
-                        Name=friend.name,
-                        ImgUrl = @"https://graph.facebook.com/" + friend.id+ "/picture?type=large"
-                    });
-                }
+            //    var facebookAccessToken = externalIdentity.FindAll("FacebookAccessToken").First();
+            //    var facebook = new FacebookClient(facebookAccessToken.Value);
+            //    dynamic myInfo = facebook.Get("/me/friends");
+            //    var friendsList = new List<FacebookViewModel>();
+            //    foreach (dynamic friend in myInfo.data)
+            //    {
+            //        friendsList.Add(new FacebookViewModel()
+            //        {
+            //            Name = friend.name,
+            //            ImgUrl = @"https://graph.facebook.com/" + friend.id + "/picture?type=large"
+            //        });
+            
+//}
 
-                ViewBag.FacebookFriends = friendsList;
+            //    ViewBag.FacebookFriends = friendsList;
                 if (externalIdentity.Claims.FirstOrDefault().Issuer=="Google")
                 {
                     var picture = externalIdentity.Claims.FirstOrDefault(c => c.Type.Equals("picture")).Value;
